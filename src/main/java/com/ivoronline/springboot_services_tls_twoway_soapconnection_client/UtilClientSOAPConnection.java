@@ -24,11 +24,11 @@ public class UtilClientSOAPConnection {
     KeyStore            trustStore = UtilKeys.getStore(trustStoreName, trustStorePassword, trustStoreType);
     KeyStore            keyStore   = UtilKeys.getStore(keyStoreName  , keyStorePassword  , keyStoreType  );
 
-    //CONFIGURE TRUST MANAGER FACTORY
+    //CONFIGURE TRUST MANAGER FACTORY (For One-Way TLS)
     TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("PKIX");
                         trustManagerFactory.init(trustStore);
 
-    //CONFIGURE KEY MANAGER FACTORY
+    //CONFIGURE KEY MANAGER FACTORY   (For Two-Way TLS)
     KeyManagerFactory   keyManagerFactory = KeyManagerFactory.getInstance("PKIX");
                         keyManagerFactory.init(keyStore, keyStorePassword.toCharArray());
 
@@ -42,4 +42,6 @@ public class UtilClientSOAPConnection {
   }
 
 }
+
+
 
